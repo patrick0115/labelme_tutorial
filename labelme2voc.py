@@ -28,17 +28,34 @@ def main():
 
     if osp.exists(args.output_dir):
         print("Output directory already exists:", args.output_dir)
-        # sys.exit(1)
-    # os.makedirs(args.output_dir)
-    # os.makedirs(osp.join(args.output_dir, "JPEGImages"))
-    # os.makedirs(osp.join(args.output_dir, "SegmentationClass"))
-    # os.makedirs(osp.join(args.output_dir, "SegmentationClassPNG"))
-    # if not args.noviz:
-    #     os.makedirs(
-    #         osp.join(args.output_dir, "SegmentationClassVisualization")
-    #     )
-    print("Creating dataset:", args.output_dir)
+    else:   
+        print("Create output directory:", args.output_dir)
+        os.makedirs(args.output_dir)
 
+    if osp.exists(osp.join(args.output_dir, "JPEGImages")):
+        print("JPEGImages directory already exists:", osp.join(args.output_dir, "JPEGImages"))
+    else:   
+        print("Create JPEGImages directory:", osp.join(args.output_dir, "JPEGImages"))
+        os.makedirs(osp.join(args.output_dir, "JPEGImages"))
+
+    if osp.exists(osp.join(args.output_dir, "SegmentationClass")):
+        print("SegmentationClass directory already exists:", osp.join(args.output_dir, "SegmentationClass"))
+    else:   
+        print("Create directory:", osp.join(args.output_dir, "SegmentationClass"))
+        os.makedirs(osp.join(args.output_dir, "SegmentationClass"))
+
+
+    if osp.exists(osp.join(args.output_dir, "SegmentationClassPNG")):
+        print("Output directory already exists:", osp.join(args.output_dir, "SegmentationClassPNG"))
+    else:   
+        print("Create directory:",osp.join(args.output_dir, "SegmentationClassPNG"))
+        os.makedirs(osp.join(args.output_dir, "SegmentationClassPNG"))
+    if not args.noviz:
+        if osp.exists(osp.join(args.output_dir, "SegmentationClassVisualization")):
+            print("Output directory already exists:",args.output_dir, "SegmentationClassVisualization")
+        else:   
+            print("Create directory:", osp.join(args.output_dir, "SegmentationClassVisualization"))
+            os.makedirs(osp.join(args.output_dir, "SegmentationClassVisualization"))
     class_names = []
     class_name_to_id = {}
     with open(args.labels,"w") as labeltxt :
@@ -47,7 +64,6 @@ def main():
             labeltxt.write(str(i)+"\n")
     labeltxt=open(args.labels,"r")
     for i, line in enumerate(labeltxt.readlines()):
-        
         class_id = i - 1  # starts with -1
         class_name = line.strip()
         class_name_to_id[class_name] = class_id
@@ -58,17 +74,14 @@ def main():
             assert class_name == "_background_"
         class_names.append(class_name)
     class_names = tuple(class_names)
-    print("class_names:", class_names)
     out_class_names_file = osp.join(args.output_dir, "class_names.txt")
     with open(out_class_names_file, "w") as f:
         f.writelines("\n".join(class_names))
     print("Saved class_names:", out_class_names_file)
-    print(osp.join(args.input_dir))
     for filename in glob.glob(osp.join(args.input_dir, "*.json")):
         print("Generating dataset from:", filename)
 
         label_file = labelme.LabelFile(filename=filename)
-        print(label_file)
         base = osp.splitext(osp.basename(filename))[0]
         out_img_file = osp.join(args.output_dir, "JPEGImages", base + ".jpg")
         out_lbl_file = osp.join(

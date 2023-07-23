@@ -25,7 +25,11 @@ def main():
         "--noviz", help="no visualization", action="store_true"
     )
     args = parser.parse_args()
-
+    if osp.exists(args.input_dir):
+        print("Output directory already exists:", args.input_dir)
+    else:   
+        print("Create input directory:", args.input_dir)
+        os.makedirs(args.input_dir)
     if osp.exists(args.output_dir):
         print("Output directory already exists:", args.output_dir)
     else:   

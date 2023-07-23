@@ -2,23 +2,33 @@
 ## Preparation
 ### Prepare Folder
 1. [Download ICALAB_val_image](https://drive.google.com/drive/folders/1XAJ9Pcwi1-pNGjYvxFnvrbDn38dt1zP4?usp=drive_link)
-2. Create label folder 
+![](https://hackmd.io/_uploads/ByIXec553.png)
+
+3. Clone [labelme_tutorial](https://github.com/patrick0115/labelme_tutorial) or download ZIP
+```
+git clone git@github.com:patrick0115/labelme_tutorial.git
+```
 - Folder structure
 ```bash
 Anypath
 ├── ICALAB_val_image
+│   ├── JPEGImages
+│   ├── SegmentationClass  
+│   ├── SegmentationClassPNG
+│   ├── SegmentationClassVisualization  
 │   ├── color_coding_semantic_segmentation_classes - Sheet1.csv
+│   ├── class_names.txt
 │   ├── images  
 │   │    │── 0000.jpg
 │   │    │── 0001.jpg
 │   │    │── 0002.jpg
 │   │    │ .......
-├── label 
+├── labelme_tutorial 
 │   ├── json
 │   ├── output
 │   ├── label.txt
 ```
-![](https://hackmd.io/_uploads/BJT-6v5ch.png)
+![](https://hackmd.io/_uploads/HyAq4K55n.png)
 ![](https://hackmd.io/_uploads/r1RD6wc53.png)
 
 ### Install labelme
@@ -46,5 +56,17 @@ Choose images folder with raw images.
 - 畫面色調調整
 若圖片不清楚，可以調整圖案亮度
 ![](https://hackmd.io/_uploads/rysTlv5c2.png)
-![](https://hackmd.io/_uploads/H1LXZvq93.png)
-## Start label
+
+- 儲存在 labelme_tutorial/json
+![](https://hackmd.io/_uploads/ByJArYc52.png)
+
+## Start Semantic Segmentation
+```bash
+python .\labelme2voc.py
+```
+- 會在output資料夾產生一下檔案
+
+![](https://hackmd.io/_uploads/Skw3195c3.png)
+
+- 上傳到對應資料夾
+![](https://hackmd.io/_uploads/rJg7e9qq2.png)

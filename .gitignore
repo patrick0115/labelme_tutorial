@@ -1,5 +1,9 @@
-/output/*
-/json/*
+/output/JPEGImages
+/output/SegmentationClass
+/output/SegmentationClassPNG
+/output/SegmentationClassVisualization
+/output/class_names
+/json/00*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

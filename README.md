@@ -1,8 +1,11 @@
-# [Labelme](https://github.com/wkentaro/labelme)
+# Labelme
+- [Labelme tutorial](https://hackmd.io/@agbug/ByjZArc9h)
+- [Labelme github](https://github.com/wkentaro/labelme)
 ## Preparation
 ### Prepare Folder
 1. [Download ICALAB_val_image](https://drive.google.com/drive/folders/1XAJ9Pcwi1-pNGjYvxFnvrbDn38dt1zP4?usp=drive_link)
-![](https://hackmd.io/_uploads/ByIXec553.png)
+![](https://hackmd.io/_uploads/rkJl2dsc3.png)
+
 
 3. Clone [labelme_tutorial](https://github.com/patrick0115/labelme_tutorial) or download ZIP
 ```
@@ -13,7 +16,8 @@ git clone git@github.com:patrick0115/labelme_tutorial.git
 Anypath
 ├── ICALAB_val_image
 │   ├── JPEGImages
-│   ├── SegmentationClass  
+│   ├── SegmentationClass 
+│   ├── json  
 │   ├── SegmentationClassPNG
 │   ├── SegmentationClassVisualization  
 │   ├── color_coding_semantic_segmentation_classes - Sheet1.csv
@@ -68,5 +72,7 @@ python .\labelme2voc.py
 
 ![](https://hackmd.io/_uploads/Skw3195c3.png)
 
-- 上傳到對應資料夾
-![](https://hackmd.io/_uploads/rJg7e9qq2.png)
+- 上傳到對應資料夾(包含json檔)
+![](https://hackmd.io/_uploads/BJhAjOs93.png)
+
+
